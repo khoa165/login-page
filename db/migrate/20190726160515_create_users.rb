@@ -7,7 +7,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.date   :birthday
-      t.string :location
+      t.string :country
+      t.string :linkedin_account
+      t.string :github_account
       t.timestamps null: false
     end
   end

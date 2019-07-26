@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2019_07_26_160515) do
     t.string "first_name"
     t.string "last_name"
     t.date "birthday"
-    t.string "location"
+    t.string "country"
+    t.string "linkedin_account"
+    t.string "github_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
