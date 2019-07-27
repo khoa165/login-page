@@ -1,40 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sinatra - Hacker News</title>
+  <title>Todo list</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 
-    <link rel="stylesheet" href="../public/css/style.css">
+  <!-- <link rel="stylesheet" href="../public/css/application.css"> -->
 
-  </head>
-  <body>
-    <%= yield %>
-    <script>
-      function addInput() {
-        var inputField = document.getElementById('myinput');
-        var inputText = inputField.value;
-        var input = '<h3 class="bg-danger text-light">' + inputText + '<h3>';
-        var myList = document.getElementById('mylist');
-        var newLi = document.createElement('li');
-        newLi.innerHTML = input;
-        myList.appendChild(newLi);
-        inputField.value = ""
-      }
+  <style>
+    body, html {
+      height: 100%;
+    }
+    html {
+      box-sizing: border-box;
+    }
 
-      var submitButton = document.getElementById('mybutton');
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body {
+      /*background: url("../public/checklist_bg.jpg") no-repeat fixed;*/
+      background-color: #DAE3E7;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
 
-      submitButton.addEventListener('click', addInput, false);
-    </script>
+    .navbar-nav .nav-link {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 20px;
+    }
 
-    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
+    .navbar-nav .nav-link:hover {
+      color: #ffdd67 !important;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+<body>
+
+  <%= yield %>
+
+  <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function addInput() {
+      var inputField = document.getElementById('myinput');
+      var inputText = inputField.value;
+      var input = '<h3 class="bg-danger text-light">' + inputText + '<h3>';
+      var myList = document.getElementById('mylist');
+      var newLi = document.createElement('li');
+      newLi.innerHTML = input;
+      myList.appendChild(newLi);
+      inputField.value = ""
+    }
+
+    var submitButton = document.getElementById('mybutton');
+
+    submitButton.addEventListener('click', addInput, false);
+  </script>
+</body>
 </html>

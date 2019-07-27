@@ -1,0 +1,16 @@
+body {
+  background: url("../../images/checklist_bg.jpg") no-repeat fixed;
+  background-size: cover;
+  font-family: 'Lato', sans-serif;
+  color: white;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffdd67 !important;
+    font-weight: bold;
+}
