@@ -34,6 +34,6 @@ end
 
 get '/todo-app/:username' do
   @user = User.find_by(username: params["username"])
-  @tasks = Task.where("task.user = ?", @user)
+  @tasks = Task.where("user_id = ?", @user.id)
   erb :list
 end

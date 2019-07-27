@@ -1,7 +1,7 @@
 
 <div class="container p-3 text-center mt-3 col-lg-6">
-  <div class="bg-dark py-3 rounded">
-    <h2>Hello #{@user.name}</h2>
+  <div class="bg-dark py-3 rounded text-light">
+    <h2>Hello <%= @user.username %></h2>
     <h2>Your TO-DO list</h2>
     <form action="">
       <input type="text" id="myinput" class="m-0">
@@ -11,10 +11,12 @@
     </form>
   </div>
   <ul class="p-0 mt-2 list-unstyled" id="mylist">
-    <% @tasks.each do |task| %>
-      <li>
-        <h3 class="rounded bg-dark text-light">"#{task.name}"</h3>
-      </li>
+    <% if @tasks != nil && @tasks.length > 0%>
+      <% @tasks.each do |task| %>
+        <li>
+          <h3 class="rounded bg-dark text-light"><%= task.task_name %></h3>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
