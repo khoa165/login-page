@@ -14,5 +14,13 @@ set :bind, '0.0.0.0'
 
 get '/' do
   erb :index
+end
 
+get '/new' do
+  erb :new
+end
+
+post "/user_signup" do
+  User.create(username: params["username"], email: params["email"], password: params["password"])
+  redirect "/"
 end
