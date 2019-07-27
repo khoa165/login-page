@@ -20,7 +20,14 @@ get '/new' do
   erb :new
 end
 
-post "/user_signup" do
+get '/login' do
+  erb :login
+end
+
+post '/user_signup' do
   User.create(username: params["username"], email: params["email"], password: params["password"])
   redirect "/"
+end
+
+get '/todo-app' do
 end
