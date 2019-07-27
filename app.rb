@@ -32,4 +32,5 @@ post '/user_signup' do
 end
 
 get '/todo-app' do
+  erb :list
 end

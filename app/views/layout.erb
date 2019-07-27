@@ -16,7 +16,6 @@
     body, html {
       height: 100%;
     }
-
     html {
       box-sizing: border-box;
     }
@@ -47,11 +46,28 @@
 
 </head>
 <body>
+
   <%= yield %>
 
   <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function addInput() {
+      var inputField = document.getElementById('myinput');
+      var inputText = inputField.value;
+      var input = '<h3 class="bg-danger text-light">' + inputText + '<h3>';
+      var myList = document.getElementById('mylist');
+      var newLi = document.createElement('li');
+      newLi.innerHTML = input;
+      myList.appendChild(newLi);
+      inputField.value = ""
+    }
+
+    var submitButton = document.getElementById('mybutton');
+
+    submitButton.addEventListener('click', addInput, false);
+  </script>
 </body>
 </html>
