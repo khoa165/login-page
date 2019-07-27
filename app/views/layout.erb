@@ -15,6 +15,22 @@
   </head>
   <body>
     <%= yield %>
+    <script>
+      function addInput() {
+        var inputField = document.getElementById('myinput');
+        var inputText = inputField.value;
+        var input = '<h3 class="bg-danger text-light">' + inputText + '<h3>';
+        var myList = document.getElementById('mylist');
+        var newLi = document.createElement('li');
+        newLi.innerHTML = input;
+        myList.appendChild(newLi);
+        inputField.value = ""
+      }
+
+      var submitButton = document.getElementById('mybutton');
+
+      submitButton.addEventListener('click', addInput, false);
+    </script>
 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

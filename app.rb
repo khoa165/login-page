@@ -24,3 +24,7 @@ post "/user_signup" do
   User.create(username: params["username"], email: params["email"], password: params["password"])
   redirect "/"
 end
+
+get '/list' do
+  erb :list
+end
