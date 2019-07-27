@@ -2,10 +2,10 @@
   <div class="bg-dark py-3 rounded text-light">
     <h2>Hello <%= @user.username %></h2>
     <h2>Your TO-DO list</h2>
-    <form action="/todo_app/add_todo_task" method="POST">
+    <form action="/todo_app/<%= @user.username %>/add_todo_task" method="POST">
       <label for="todoInput">Add a new to-do task</label>
       <input type="text" name="todo_task" id="todoInput" class="m-0">
-      <a class="btn btn-sm btn-danger" id="submitTodoButton" href="#">Submit</a>
+      <button type="submit" class="btn btn-sm btn-danger" id="submitTodoButton">Submit</button>
     </form>
   </div>
   <ul class="p-0 mt-2 list-unstyled" id="todoList">
