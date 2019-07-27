@@ -28,12 +28,19 @@ end
 
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
-  username = user.username
-  redirect "/todo-app/#{username}"
+  redirect "/todo_app/#{user.username}"
 end
 
-get '/todo-app/:username' do
+get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
   @tasks = Task.where("user_id = ?", @user.id)
   erb :list
+end
+
+post '/todo_app/:username/add_todo_task' do
+  user = User.find_by(username: params["username"])
+  task = Task.create(task_name: params[todo_task])
+  task.user = user
+  task.save
+  redirect "/todo_app/#{user.username}"
 end
