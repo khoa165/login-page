@@ -27,10 +27,13 @@ get '/login' do
 end
 
 post '/user_signup' do
-  User.create(username: params["username"], email: params["email"], password: params["password"])
-  redirect "/"
+  user = User.create(username: params["username"], email: params["email"], password: params["password"])
+  username = user.username
+  redirect "/todo-app/#{username}"
 end
 
-get '/todo-app' do
+get '/todo-app/:username' do
+  @user = User.find_by(username: params["username"])
+  @tasks = Task.where("task.user = ?", @user)
   erb :list
 end
