@@ -33,8 +33,12 @@ end
 
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
-  @tasks = Task.where("user_id = ?", @user.id)
-  erb :list
+  if @user.nil?
+    # erb :error
+  else
+    @tasks = Task.where("user_id = ?", @user.id)
+    erb :list
+  end
 end
 
 post '/todo_app/:username/add_todo_task' do
