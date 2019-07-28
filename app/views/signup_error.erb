@@ -39,39 +39,50 @@
     <div class="col-12 col-md-8 col-lg-4">
       <div class="card">
         <div class="card-body">
-          <p class="my-0">Username or your password is incorrect.</h3>
-          <p class="my-0">Please try login again.</h3>
+          <ul>
+            <% @errors.each do |error| %>
+            <li><%= error %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3">
+  <div class="row justify-content-center">
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card">
         <div class="card-body">
-          <a href="/new" class="float-right btn btn-outline-primary">Sign up</a>
-          <h4 class="card-title mb-4 mt-1">Sign in</h4>
-          <form>
-            <div class="form-group">
+          <a href="/login" class="float-right btn btn-outline-primary">Sign in</a>
+          <h4 class="card-title mb-4 mt-1">Sign up</h4>
+          <form action="/user_signup" method="POST">
+            <div class="form-group mb-3">
               <label for="username">Your username</label>
-              <input name="username" id="username" class="form-control" placeholder="Email" type="email">
-            </div> <!-- form-group// -->
-            <div class="form-group">
-              <a class="float-right" href="#">Forgot?</a>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group mb-3">
+              <label for="email">Your email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group mb-3">
               <label for="password">Your password</label>
-              <input name="password" id="password" class="form-control" placeholder="******" type="password">
-            </div> <!-- form-group// -->
-            <div class="form-group">
-              <div class="checkbox">
-                <label><input type="checkbox"> Save password</label>
-              </div> <!-- checkbox .// -->
-            </div> <!-- form-group// -->
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block"> Login  </button>
-            </div> <!-- form-group// -->
+              <input type="password" class="form-control" id="password" name="password" placeholder="******">
+            </div>
+            <div class="form-group mb-3">
+              <label for="confirmPassword">Confirm your password</label>
+              <input type="password" class="form-control" id="confirmPassword" name="confirmed_password" placeholder="******">
+            </div>
+            <div class="form-group mb-3">
+              <label for="referrer">How do you know about us?</label>
+              <select id="referrer" name="referrer" class="custom-select">
+                <option value="Facebook" selected>Facebook</option>
+                <option value="Google">Google search</option>
+                <option value="Friend">A friend</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block py-2">Sign up</button>
           </form>
         </div>
-      </div> <!-- card.// -->
+      </div>
     </div>
   </div>
 </div>
