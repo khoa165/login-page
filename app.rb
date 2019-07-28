@@ -34,19 +34,21 @@ end
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
   if @user.nil?
-    erb :error
+    redirect '/login-again'
   else
     @tasks = Task.where("user_id = ?", @user.id)
     erb :list
   end
 end
 
+get '/login-again' do
+  erb :error
+end
+
 post '/todo_app/:username/add_todo_task' do
   user = User.find_by(username: params["username"])
   task = Task.create(task_name: params["todo_task"])
-  # binding.pry
-  task.user = user
-  task.save
-  # binding.pry
+  task.user = user # Link task with user.
+  task.save # Update task.
   redirect "/todo_app/#{user.username}"
 end
