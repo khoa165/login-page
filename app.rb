@@ -28,21 +28,41 @@ end
 
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
-  redirect "/todo_app/#{user.username}"
+  if user.nil? || !user.valid?
+    errors = user.errors.messages.join("||")
+    redirect "/signup_again/#{errors}"
+  else
+    redirect "/todo_app/#{user.username}"
+  end
+end
+
+post '/user_login' do
+  user = User.find_by(username: params["username"])
+  if user.nil? || !user.valid?
+    errors = user.errors.messages.join("||")
+    redirect "/login_again/#{errors}"
+  elsif user.password != params["password"]
+    errors = "Password not matched."
+    redirect "/login_again/#{errors}"
+  else
+    redirect "/todo_app/#{user.username}"
+  end
 end
 
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
-  if @user.nil?
-    redirect '/login-again'
-  else
-    @tasks = Task.where("user_id = ?", @user.id)
-    erb :list
-  end
+  @tasks = Task.where("user_id = ?", @user.id)
+  erb :list
 end
 
-get '/login-again' do
-  erb :error
+get '/signup_again/:errors' do
+  @errors = params["errors"].split("||")
+  erb :signup_error
+end
+
+get '/login_again/:errors' do
+  @errors = params["errors"].split("||")
+  erb :login_error
 end
 
 post '/todo_app/:username/add_todo_task' do

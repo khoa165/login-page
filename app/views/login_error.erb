@@ -39,8 +39,11 @@
     <div class="col-12 col-md-8 col-lg-4">
       <div class="card">
         <div class="card-body">
-          <p class="my-0">Username or your password is incorrect.</h3>
-          <p class="my-0">Please try login again.</h3>
+          <ul>
+            <% @errors.each do |error| %>
+            <li><%= error %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
@@ -54,7 +57,7 @@
           <form>
             <div class="form-group">
               <label for="username">Your username</label>
-              <input name="username" id="username" class="form-control" placeholder="Email" type="email">
+              <input name="username" id="username" class="form-control" placeholder="Email" type="text">
             </div> <!-- form-group// -->
             <div class="form-group">
               <a class="float-right" href="#">Forgot?</a>
