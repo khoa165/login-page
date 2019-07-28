@@ -28,12 +28,12 @@ end
 
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
-  if user.nil? || !user.valid?
-    errors = user.errors.messages.join("||")
-    redirect "/signup_again/#{errors}"
-  else
+  # if user.nil? || !user.valid?
+  #   errors = user.errors.messages.join("||")
+  #   redirect "/signup_again/#{errors}"
+  # else
     redirect "/todo_app/#{user.username}"
-  end
+  #end
 end
 
 post '/user_login' do
@@ -51,8 +51,12 @@ end
 
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
-  @tasks = Task.where("user_id = ?", @user.id)
-  erb :list
+  if @user.nil?
+
+  else
+    @tasks = Task.where("user_id = ?", @user.id)
+    erb :list
+  end
 end
 
 get '/signup_again/:errors' do
