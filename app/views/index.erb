@@ -1,19 +1,35 @@
-<nav class="navbar py-0 navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
-  <div class="navbar">
-    <a class="navbar-brand mx-5" href="#"><i class="far fa-list-alt"></i> TODO/LIST</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link active mx-2" href="/">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link mx-0" href="/">About</a>
-          <a class="nav-item nav-link mx-2" href="/">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="navbar">
-    <a href="/new" class="btn btn-sm btn-outline-primary mx-2">Create account</a>
-    <a href="/login" class="btn btn-sm btn-outline-success mx-2">Log in</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+  <a class="navbar-brand mx-5" href="/"><i class="far fa-list-alt"></i> TODO/LIST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link mx-2" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link mx-0" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link mx-2" href="#">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle mx-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apps</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">To-do list</a>
+          <a class="dropdown-item" href="#">Coming soon</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Suggess your idea</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline input-group-sm my-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-sm btn-outline-success mx-2" type="submit">Search</button>
+      <a href="/new" class="btn btn-sm btn-outline-primary mx-2">Create account</a>
+      <a href="/login" class="btn btn-sm btn-outline-success mx-2">Log in</a>
+    </form>
   </div>
 </nav>
