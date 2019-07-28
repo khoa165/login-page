@@ -34,7 +34,7 @@ end
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
   if @user.nil?
-    # erb :error
+    erb :error
   else
     @tasks = Task.where("user_id = ?", @user.id)
     erb :list

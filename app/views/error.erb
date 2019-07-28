@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+  <a class="navbar-brand mx-5" href="/"><i class="far fa-list-alt"></i> TODO/LIST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link mx-2" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link mx-0" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link mx-2" href="#">Contact</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle mx-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Apps</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/new">To-do list</a>
+          <a class="dropdown-item" href="#">Coming soon</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Suggess your idea</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline input-group-sm my-0">
+      <input class="form-control mx-0" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-sm btn-outline-success mx-3" type="submit">Search</button>
+      <a href="/new" class="btn btn-sm btn-outline-primary mx-0">Create account</a>
+      <a href="/login" class="btn btn-sm btn-outline-success mx-3">Log in</a>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="my-0">Username or your password is incorrect.</h3>
+          <p class="my-0">Please try login again.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <a href="/new" class="float-right btn btn-outline-primary">Sign up</a>
+          <h4 class="card-title mb-4 mt-1">Sign in</h4>
+          <form>
+            <div class="form-group">
+              <label for="username">Your username</label>
+              <input name="username" id="username" class="form-control" placeholder="Email" type="email">
+            </div> <!-- form-group// -->
+            <div class="form-group">
+              <a class="float-right" href="#">Forgot?</a>
+              <label for="password">Your password</label>
+              <input name="password" id="password" class="form-control" placeholder="******" type="password">
+            </div> <!-- form-group// -->
+            <div class="form-group">
+              <div class="checkbox">
+                <label><input type="checkbox"> Save password</label>
+              </div> <!-- checkbox .// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+            </div> <!-- form-group// -->
+          </form>
+        </div>
+      </div> <!-- card.// -->
+    </div>
+  </div>
+</div>
