@@ -34,14 +34,15 @@ end
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
   @tasks = Task.where("user_id = ?", @user.id)
-  binding.pry
   erb :list
 end
 
 post '/todo_app/:username/add_todo_task' do
   user = User.find_by(username: params["username"])
   task = Task.create(task_name: params["todo_task"])
+  # binding.pry
   task.user = user
   task.save
+  # binding.pry
   redirect "/todo_app/#{user.username}"
 end

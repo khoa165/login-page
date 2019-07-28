@@ -9,12 +9,12 @@
     </form>
   </div>
   <ul class="p-0 mt-2 list-unstyled" id="todoList">
-    <% if @tasks != nil && @tasks.length > 0 %>
       <% @tasks.each do |task| %>
         <li>
           <h3 class="rounded bg-dark text-light"><%= task.task_name %></h3>
         </li>
       <% end %>
+    <% if @tasks != nil && @tasks.length > 0 %>
     <% end %>
   </ul>
 </div>
