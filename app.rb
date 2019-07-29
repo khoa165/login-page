@@ -28,12 +28,12 @@ end
 
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
-  # if user.nil? || !user.valid?
-  #   errors = user.errors.messages.join("||")
-  #   redirect "/signup_again/#{errors}"
-  # else
+  if user.nil? || !user.valid?
+    errors = user.errors.messages.join("||")
+    redirect "/signup_again/#{errors}"
+  else
     redirect "/todo_app/#{user.username}"
-  #end
+  end
 end
 
 post '/user_login' do
@@ -51,12 +51,8 @@ end
 
 get '/todo_app/:username' do
   @user = User.find_by(username: params["username"])
-  if @user.nil?
-
-  else
-    @tasks = Task.where("user_id = ?", @user.id)
-    erb :list
-  end
+  @tasks = Task.where("user_id = ?", @user.id)
+  erb :list
 end
 
 get '/signup_again/:errors' do
@@ -74,5 +70,13 @@ post '/todo_app/:username/add_todo_task' do
   task = Task.create(task_name: params["todo_task"])
   task.user = user # Link task with user.
   task.save # Update task.
+  redirect "/todo_app/#{user.username}"
+end
+
+post '/todo_app/:username/delete_todo_task' do
+  user = User.find_by(username: params["username"])
+  task = Task.find_by(user_id: user.id)
+  task.user = user # Link task with user.
+  task.destroy # Delete task
   redirect "/todo_app/#{user.username}"
 end
