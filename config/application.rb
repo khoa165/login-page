@@ -18,15 +18,5 @@ ActiveRecord::Base.logger = logger
 # Load models
 Dir["#{__dir__}/../app/models/*.rb"].each { |file| require file }
 
-# Load css
-# Dir["#{__dir__}/../app/public/css/*.css"].each { |file| require file }
-
-# Load js
-# Dir["#{__dir__}/../app/public/js/*.js"].each { |file| require file }
-
-# Load images
-# Dir["#{__dir__}/../app/public/*.jpg"].each { |file| require file }
-
-
 # Discard warning message for i18n errors
 I18n.enforce_available_locales = false

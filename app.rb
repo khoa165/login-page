@@ -5,13 +5,13 @@ require "better_errors"
 
 configure :development do
   use BetterErrors::Middleware
-  # BetterErrors.application_root = File.expand_path(__dir__)
-  BetterErrors.application_root = File.expand_path('..', __FILE__)
+  BetterErrors.application_root = File.expand_path(__dir__)
 end
 
 require_relative "config/application"
 
 set :views, (proc { File.join(root, "app/views") })
+set :public_folder, File.dirname(__FILE__) + '/app/public'
 set :bind, '0.0.0.0'
 
 get '/' do
@@ -29,7 +29,14 @@ end
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
   if user.nil? || !user.valid?
-    errors = user.errors.messages.join("||")
+    # errors = user.errors.messages.join("||")
+    puts "something wrong, this is debug code."
+    errors = ""
+    user.errors.messages.each do |error, message|
+      errors += "|| #{error}: #{message}"
+    end
+    errors = errors[3..-1]
+    puts "this is all errors: #{errors}"
     redirect "/signup_again/#{errors}"
   else
     redirect "/todo_app/#{user.username}"
@@ -39,7 +46,12 @@ end
 post '/user_login' do
   user = User.find_by(username: params["username"])
   if user.nil? || !user.valid?
-    errors = user.errors.messages.join("||")
+    puts "something wrong, this is debug code."
+    errors = ""
+    user.errors.messages.each do |error, message|
+      errors += "|| #{error}: #{message}"
+    end
+    errors = errors[3..-1]
     redirect "/login_again/#{errors}"
   elsif user.password != params["password"]
     errors = "Password not matched."
@@ -56,12 +68,12 @@ get '/todo_app/:username' do
 end
 
 get '/signup_again/:errors' do
-  @errors = params["errors"].split("||")
+  # @errors = params["errors"].split("||")
   erb :signup_error
 end
 
 get '/login_again/:errors' do
-  @errors = params["errors"].split("||")
+  # @errors = params["errors"].split("||")
   erb :login_error
 end
 
@@ -73,10 +85,9 @@ post '/todo_app/:username/add_todo_task' do
   redirect "/todo_app/#{user.username}"
 end
 
-post '/todo_app/:username/delete_todo_task' do
+post '/todo_app/:username/:task_id/delete_todo_task' do
   user = User.find_by(username: params["username"])
-  task = Task.find_by(user_id: user.id)
-  task.user = user # Link task with user.
+  task = Task.find(params["task_id"])
   task.destroy # Delete task
   redirect "/todo_app/#{user.username}"
 end

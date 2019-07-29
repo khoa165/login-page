@@ -1,5 +1,5 @@
 body {
-  background: url("../../images/checklist_bg.jpg") no-repeat fixed;
+  background: url("../../images/checklist_bg.jpg") center center no-repeat fixed;
   background-size: cover;
   font-family: 'Lato', sans-serif;
   color: white;
