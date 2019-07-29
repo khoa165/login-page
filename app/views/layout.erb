@@ -9,41 +9,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
-
-  <!-- <link rel="stylesheet" href="../public/css/application.css"> -->
-
-  <style>
-    body, html {
-      height: 100%;
-    }
-    html {
-      box-sizing: border-box;
-    }
-
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-    body {
-      /*background: url("../public/checklist_bg.jpg") no-repeat fixed;*/
-      background-color: #DAE3E7;
-      background-size: cover;
-      font-family: 'Lato', sans-serif;
-      /*color: white;*/
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar-nav .nav-link {
-      color: rgba(0, 0, 0, 0.8);
-      font-size: 20px;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #ffdd67 !important;
-      font-weight: bold;
-    }
-  </style>
-
+  <link rel="stylesheet" type="text/css" href="css/application.css">
 </head>
 <body>
 
@@ -53,21 +19,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>
-    function addInput() {
-      var inputField = document.getElementById('todoInput');
-      var inputText = inputField.value;
-      var input = '<h3 class="bg-dark mt-1 rounded text-light">' + inputText + '<h3>';
-      var myList = document.getElementById('todoList');
-      var newLi = document.createElement('li');
-      newLi.innerHTML = input;
-      myList.appendChild(newLi);
-      // inputField.value = ""
-    }
-
-    var submitButton = document.getElementById('submitTodoButton');
-
-    submitButton.addEventListener('click', addInput, false);
-  </script>
+  <script src="application.css"></script>
 </body>
 </html>
