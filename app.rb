@@ -72,3 +72,11 @@ post '/todo_app/:username/add_todo_task' do
   task.save # Update task.
   redirect "/todo_app/#{user.username}"
 end
+
+post '/todo_app/:username/delete_todo_task' do
+  user = User.find_by(username: params["username"])
+  task = Task.find_by(user_id: user.id)
+  task.user = user # Link task with user.
+  task.destroy # Delete task
+  redirect "/todo_app/#{user.username}"
+end
