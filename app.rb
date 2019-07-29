@@ -36,6 +36,7 @@ post '/user_signup' do
       errors += "|| #{error}: #{message}"
     end
     errors = errors[3..-1]
+    puts "this is all errors: #{errors}"
     redirect "/signup_again/#{errors}"
   else
     redirect "/todo_app/#{user.username}"
@@ -67,12 +68,12 @@ get '/todo_app/:username' do
 end
 
 get '/signup_again/:errors' do
-  @errors = params["errors"].split("||")
+  # @errors = params["errors"].split("||")
   erb :signup_error
 end
 
 get '/login_again/:errors' do
-  @errors = params["errors"].split("||")
+  # @errors = params["errors"].split("||")
   erb :login_error
 end
 
@@ -84,10 +85,9 @@ post '/todo_app/:username/add_todo_task' do
   redirect "/todo_app/#{user.username}"
 end
 
-post '/todo_app/:username/delete_todo_task' do
+post '/todo_app/:username/:task_id/delete_todo_task' do
   user = User.find_by(username: params["username"])
-  task = Task.find_by(user_id: user.id)
-  task.user = user # Link task with user.
+  task = Task.find(params["task_id"])
   task.destroy # Delete task
   redirect "/todo_app/#{user.username}"
 end

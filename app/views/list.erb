@@ -47,7 +47,7 @@
   <ul class="p-0 mt-2 list-unstyled" id="todoList">
     <% @tasks.each do |task| %>
     <li>
-      <form action="/todo_app/<%= @user.username %>/delete_todo_task" method="POST">
+      <form action="/todo_app/<%= @user.username %>/<%= task.id %>/delete_todo_task" method="POST">
         <div class="d-flex bg-dark border border-primary">
           <h3 class="bg-dark text-light flex-fill"><%= task.task_name %></h3>
           <button type="submit" class="p-0 btn btn-sm btn-danger mb-1" id="DeleteTaskButton">Delete</button>
