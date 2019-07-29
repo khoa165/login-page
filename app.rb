@@ -29,7 +29,13 @@ end
 post '/user_signup' do
   user = User.create(username: params["username"], email: params["email"], password: params["password"])
   if user.nil? || !user.valid?
-    errors = user.errors.messages.join("||")
+    # errors = user.errors.messages.join("||")
+    puts "something wrong, this is debug code."
+    errors = ""
+    user.errors.messages.each do |error, message|
+      errors += "|| #{error}: #{message}"
+    end
+    errors = errors[3..-1]
     redirect "/signup_again/#{errors}"
   else
     redirect "/todo_app/#{user.username}"
@@ -39,7 +45,12 @@ end
 post '/user_login' do
   user = User.find_by(username: params["username"])
   if user.nil? || !user.valid?
-    errors = user.errors.messages.join("||")
+    puts "something wrong, this is debug code."
+    errors = ""
+    user.errors.messages.each do |error, message|
+      errors += "|| #{error}: #{message}"
+    end
+    errors = errors[3..-1]
     redirect "/login_again/#{errors}"
   elsif user.password != params["password"]
     errors = "Password not matched."
